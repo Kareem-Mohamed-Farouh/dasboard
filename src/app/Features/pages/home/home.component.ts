@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal, WritableSignal } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -8,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  showModal:WritableSignal<boolean> = signal(false)
+
+toggleModal(){
+  this.showModal.set(!this.showModal());
+}
 }
