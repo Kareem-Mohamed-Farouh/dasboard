@@ -1,108 +1,633 @@
-
-<!-- Modal -->
-@if (showModal()) {
-  <div  class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 ">
-  <div class="bg-white w-full md:w-4/6 rounded-2xl shadow-lg  p-6 relative">
-
-    <!-- Close Button -->
-    <button (click)="toggleModal()" class="absolute cursor-pointer top-3 right-3 text-gray-400 hover:text-gray-600 text-xl">❌</button>
-
-    <!-- Modal Title -->
-    <h2 class="text-xl font-semibold mb-4 text-gray-800">Add New Movie</h2>
-
-    <!-- Form -->
-    <form class="space-y-4">
-      <!-- Poster URL -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700">Poster URL</label>
-        <input type="url" placeholder="Enter poster image link" class="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring focus:ring-blue-200 outline-none">
-      </div>
-
-      <!-- Movie Name -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700">Movie Name</label>
-        <input type="text" placeholder="Enter movie name" class="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring focus:ring-blue-200 outline-none">
-      </div>
-
-      <!-- Genre -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700">Genre</label>
-        <select class="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring focus:ring-blue-200 outline-none">
-          <option value="">Select genre</option>
-          <option>Action</option>
-          <option>Comedy</option>
-          <option>Drama</option>
-          <option>Horror</option>
-          <option>Sci-Fi</option>
-        </select>
-      </div>
-
-      <!-- Rating -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700">Rating</label>
-        <input type="number" min="0" max="10" step="0.1" placeholder="Enter rating (0 - 10)" class="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring focus:ring-blue-200 outline-none">
-      </div>
-
-      <!-- Submit -->
-      <button type="submit" class="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-2 rounded-lg hover:from-green-600 hover:to-emerald-600 transition">
-        Save Movie
+<div class="min-h-screen bg-gray-50/50">
+  <aside
+    class="bg-gradient-to-br from-gray-800 to-gray-900 -translate-x-80 fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0"
+  >
+    <div class="relative border-b border-white/20">
+      <a class="flex items-center gap-4 py-6 px-8" href="#/">
+        <h6
+          class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-white"
+        >
+          Material Tailwind Dashboard
+        </h6>
+      </a>
+      <button
+        class="middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-white hover:bg-white/10 active:bg-white/30 absolute right-0 top-0 grid rounded-br-none rounded-tl-none xl:hidden"
+        type="button"
+      >
+        <span
+          class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2.5"
+            stroke="currentColor"
+            aria-hidden="true"
+            class="h-5 w-5 text-white"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </span>
       </button>
-    </form>
-  </div>
-</div>
-}
+    </div>
+    <div class="m-4">
+      <ul class="mb-4 flex flex-col gap-1">
+        <li>
+          <a aria-current="page" class="active" href="#">
+            <button
+              class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85] w-full flex items-center gap-4 px-4 capitalize"
+              type="button"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                class="w-5 h-5 text-inherit"
+              >
+                <path
+                  d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z"
+                ></path>
+                <path
+                  d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z"
+                ></path>
+              </svg>
+              <p
+                class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize"
+              >
+                dashboard
+              </p>
+            </button>
+          </a>
+        </li>
+        <li>
+          <a class="" href="#">
+            <button
+              class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
+              type="button"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                class="w-5 h-5 text-inherit"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <p
+                class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize"
+              >
+                profile
+              </p>
+            </button>
+          </a>
+        </li>
+        <li>
+          <a class="" href="#">
+            <button
+              class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
+              type="button"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                class="w-5 h-5 text-inherit"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M1.5 5.625c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v12.75c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 18.375V5.625zM21 9.375A.375.375 0 0020.625 9h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zm0 3.75a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 00.375-.375v-1.5zM10.875 18.75a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375h7.5zM3.375 15h7.5a.375.375 0 00.375-.375v-1.5a.375.375 0 00-.375-.375h-7.5a.375.375 0 00-.375.375v1.5c0 .207.168.375.375.375zm0-3.75h7.5a.375.375 0 00.375-.375v-1.5A.375.375 0 0010.875 9h-7.5A.375.375 0 003 9.375v1.5c0 .207.168.375.375.375z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <p
+                class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize"
+              >
+                tables
+              </p>
+            </button>
+          </a>
+        </li>
+        <li>
+          <a class="" href="#">
+            <button
+              class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
+              type="button"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                class="w-5 h-5 text-inherit"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.25 9a6.75 6.75 0 0113.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 01-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 11-7.48 0 24.585 24.585 0 01-4.831-1.244.75.75 0 01-.298-1.205A8.217 8.217 0 005.25 9.75V9zm4.502 8.9a2.25 2.25 0 104.496 0 25.057 25.057 0 01-4.496 0z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <p
+                class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize"
+              >
+                notifactions
+              </p>
+            </button>
+          </a>
+        </li>
+      </ul>
+      <ul class="mb-4 flex flex-col gap-1">
+        <li class="mx-3.5 mt-4 mb-2">
+          <p
+            class="block antialiased font-sans text-sm leading-normal text-white font-black uppercase opacity-75"
+          >
+            auth pages
+          </p>
+        </li>
+        <li>
+          <a class="" href="#">
+            <button
+              class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
+              type="button"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                class="w-5 h-5 text-inherit"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm10.72 4.72a.75.75 0 011.06 0l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H9a.75.75 0 010-1.5h10.94l-1.72-1.72a.75.75 0 010-1.06z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              <p
+                class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize"
+              >
+                sign in
+              </p>
+            </button>
+          </a>
+        </li>
+        <li>
+          <a class="" href="#">
+            <button
+              class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
+              type="button"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                class="w-5 h-5 text-inherit"
+              >
+                <path
+                  d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z"
+                ></path>
+              </svg>
+              <p
+                class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize"
+              >
+                sign up
+              </p>
+            </button>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+  <div class="p-4 xl:ml-40">
+    <nav
+      class="block w-full max-w-full bg-transparent text-white shadow-none rounded-xl transition-all px-0 py-1"
+    >
+      <div
+        class="flex flex-col-reverse justify-between gap-6 md:flex-row md:items-center"
+      >
+        <div class="capitalize">
+          <nav aria-label="breadcrumb" class="w-max">
+            <ol
+              class="flex flex-wrap items-center w-full bg-opacity-60 rounded-md bg-transparent p-0 transition-all"
+            >
+              <li
+                class="flex items-center text-blue-gray-900 antialiased font-sans text-sm font-normal leading-normal cursor-pointer transition-colors duration-300 hover:text-light-blue-500"
+              >
+                <a href="#">
+                  <p
+                    class="block antialiased font-sans text-sm leading-normal text-blue-900 font-normal opacity-50 transition-all hover:text-blue-500 hover:opacity-100"
+                  >
+                    dashboard
+                  </p>
+                </a>
+                <span
+                  class="text-gray-500 text-sm antialiased font-sans font-normal leading-normal mx-2 pointer-events-none select-none"
+                  >/</span
+                >
+              </li>
+              <li
+                class="flex items-center text-blue-900 antialiased font-sans text-sm font-normal leading-normal cursor-pointer transition-colors duration-300 hover:text-blue-500"
+              >
+                <p
+                  class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal"
+                >
+                  home
+                </p>
+              </li>
+            </ol>
+          </nav>
+          <h6
+            class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-gray-900"
+          >
+            home
+          </h6>
+        </div>
+        <div class="flex items-center">
+          <button
+            class="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30 grid xl:hidden"
+            type="button"
+          >
+            <span
+              class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                stroke-width="3"
+                class="h-6 w-6 text-blue-gray-500"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </span>
+          </button>
+          <a href="#">
+            <button
+              class="middle none font-sans font-bold center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30 hidden items-center gap-1 px-4 xl:flex"
+              type="button"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                class="h-5 w-5 text-blue-gray-500"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                  clip-rule="evenodd"
+                ></path></svg
+              >Sign In
+            </button>
+            <button
+              class="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30 grid xl:hidden"
+              type="button"
+            >
+              <span
+                class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  class="h-5 w-5 text-blue-gray-500"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </span>
+            </button>
+          </a>
+          <button
+            class="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30"
+            type="button"
+          >
+            <span
+              class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                class="h-5 w-5 text-blue-gray-500"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M11.078 2.25c-.917 0-1.699.663-1.85 1.567L9.05 4.889c-.02.12-.115.26-.297.348a7.493 7.493 0 00-.986.57c-.166.115-.334.126-.45.083L6.3 5.508a1.875 1.875 0 00-2.282.819l-.922 1.597a1.875 1.875 0 00.432 2.385l.84.692c.095.078.17.229.154.43a7.598 7.598 0 000 1.139c.015.2-.059.352-.153.43l-.841.692a1.875 1.875 0 00-.432 2.385l.922 1.597a1.875 1.875 0 002.282.818l1.019-.382c.115-.043.283-.031.45.082.312.214.641.405.985.57.182.088.277.228.297.35l.178 1.071c.151.904.933 1.567 1.85 1.567h1.844c.916 0 1.699-.663 1.85-1.567l.178-1.072c.02-.12.114-.26.297-.349.344-.165.673-.356.985-.57.167-.114.335-.125.45-.082l1.02.382a1.875 1.875 0 002.28-.819l.923-1.597a1.875 1.875 0 00-.432-2.385l-.84-.692c-.095-.078-.17-.229-.154-.43a7.614 7.614 0 000-1.139c-.016-.2.059-.352.153-.43l.84-.692c.708-.582.891-1.59.433-2.385l-.922-1.597a1.875 1.875 0 00-2.282-.818l-1.02.382c-.114.043-.282.031-.449-.083a7.49 7.49 0 00-.985-.57c-.183-.087-.277-.227-.297-.348l-.179-1.072a1.875 1.875 0 00-1.85-1.567h-1.843zM12 15.75a3.75 3.75 0 100-7.5 3.75 3.75 0 000 7.5z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </span>
+          </button>
+          <button
+            aria-expanded="false"
+            aria-haspopup="menu"
+            id=":r2:"
+            class="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30"
+            type="button"
+          >
+            <span
+              class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                class="h-5 w-5 text-blue-gray-500"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.25 9a6.75 6.75 0 0113.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 01-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 11-7.48 0 24.585 24.585 0 01-4.831-1.244.75.75 0 01-.298-1.205A8.217 8.217 0 005.25 9.75V9zm4.502 8.9a2.25 2.25 0 104.496 0 25.057 25.057 0 01-4.496 0z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </nav>
 
+    <div class="p-6 bg-gray-100 w-full" dir="rtl">
+      <!-- مربع البحث -->
 
-
-<!--            table          -->
-<div class="p-6 bg-gray-50 min-h-screen">
-<div class="text-center my-6">
-    <h1 class="text-3xl font-bold mb-6 text-gray-800">📽 مكتبة الأفلام</h1>
-  <!-- Button to Open Modal -->
-<button (click)="toggleModal()" class=" cursor-pointer bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-4 py-2 rounded-lg hover:from-blue-600 hover:to-indigo-600 transition" >
-  Add Movie
-</button>
-</div>
-
-
-  <div class="overflow-x-auto bg-white shadow-xl rounded-2xl border border-gray-200">
-    <table class="min-w-full text-sm text-gray-700">
-      <thead class="bg-gradient-to-r from-indigo-500 to-purple-500 text-white">
-        <tr>
-          <th class="p-4 text-left">البوستر</th>
-          <th class="p-4 text-left">اسم الفيلم</th>
-          <th class="p-4 text-left">النوع</th>
-          <th class="p-4 text-left">التقييم</th>
-          <th class="p-4 text-center">الإجراءات</th>
-        </tr>
-      </thead>
-      <tbody>
-       
-        <!-- فيلم 1 -->
-        <tr class="border-t hover:bg-gray-100 transition">
-          <td class="p-4">
-            <img src="https://m.media-amazon.com/images/I/51zUbui+gbL._AC_SY679_.jpg" 
-                 alt="Inception" 
-                 class="w-16 h-24 object-cover rounded-lg shadow">
-          </td>
-          <td class="p-4 font-semibold text-gray-900">Inception</td>
-          <td class="p-4">
-            <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">Sci-Fi</span>
-          </td>
-          <td class="p-4">
-            <span class="bg-yellow-400 text-white px-3 py-1 rounded-full text-sm font-bold">⭐ 8.8</span>
-          </td>
-         <td class="p-4 text-center space-x-2">
-            <div class="flex justify-center flex-col md:flex-row gap-4">
-              <button class="px-3 py-1 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg hover:from-green-600 hover:to-green-700 transition">Visit</button>
-            <button class="px-3 py-1 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white rounded-lg hover:from-yellow-600 hover:to-yellow-700 transition">Update</button>
-            <button class="px-3 py-1 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition">Delete</button>
+      <!-- الجدول -->
+      <div class="overflow-x-auto grid grid-cols-5">
+        <div class="col-span-4">
+          <div class="flex justify-between items-center gap-3">
+            <!-- Modal toggle -->
+            <button
+              data-modal-target="authentication-modal"
+              data-modal-toggle="authentication-modal"
+              class="block text-white w-[25%] bg-linear-to-l from-blue-500 to-purple-600 my-3 hover:bg-linear-to-l transition-all duration-500 cursor-pointer hover:to-blue-500 hover:from-purple-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+              type="button"
+            >
+              إضافة مستلزم
+            </button>
+            <div class="w-full">
+              <input
+                type="text"
+                placeholder="ابحث عن المستلزمات..."
+                [(ngModel)]="searchTerm"
+                (input)="searchSupplies()"
+                class="w-full p-2 border border-gray-300 rounded shadow-sm focus:ring focus:ring-blue-200"
+              />
             </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          </div>
+        </div>
+        <table
+          class="w-full border-collapse bg-white col-span-4 shadow rounded-lg text-sm"
+        >
+          <thead>
+            <tr class="bg-gray-200 text-gray-700 rounded">
+              <th class="p-2 border">الاسم</th>
+              <th class="p-2 border">الكمية الأساسية</th>
+              <th class="p-2 border">الكمية المستخدمة</th>
+              <th class="p-2 border">الكمية الإضافية</th>
+              <th class="p-2 border">تاريخ الإضافة</th>
+              <th class="p-2 border">السعر</th>
+              <th class="p-2 border">الإجراءات</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let supply of filteredSupplies"
+              class="text-center border-t hover:bg-gray-50"
+            >
+              <td class="p-2 border">{{ supply.name }}</td>
+              <td class="p-2 border">{{ supply.baseQuantity }}</td>
+              <td class="p-2 border">{{ supply.usedQuantity }}</td>
+              <td class="p-2 border">{{ supply.extraQuantity }}</td>
+              <td class="p-2 border">{{ supply.addedDate }}</td>
+              <td class="p-2 border">
+                {{ supply.price | currency : "EGP" : "symbol" }}
+              </td>
+              <td class="p-1 border flex gap-1 space-x-2 space-x-reverse">
+                <button
+                  (click)="editSupply(supply)"
+                  data-modal-target="authentication-modal"
+                  data-modal-toggle="authentication-modal"
+                  class="block text-white bg-linear-to-l from-blue-500 to-purple-600 my-3 hover:bg-linear-to-l transition-all duration-500 cursor-pointer hover:to-blue-500 hover:from-purple-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1 text-center"
+                  type="button"
+                >
+                  تعديل
+                </button>
+                <button
+                  (click)="deleteSupply(supply.id!)"
+                  class="block text-white bg-linear-to-l from-red-500 to-purple-600 my-3 hover:bg-linear-to-l transition-all duration-500 cursor-pointer hover:to-red-500 hover:from-purple-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-1 text-center"
+                >
+                  حذف
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
+<!-- Main modal -->
+<div
+  id="authentication-modal"
+  tabindex="-1"
+  aria-hidden="true"
+  class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+>
+  <div class="relative p-4 w-full max-w-md max-h-full">
+    <!-- Modal content -->
+    <div class="relative bg-white rounded-lg shadow-sm">
+      <!-- Modal header -->
+      <div
+        class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200"
+      >
+        <h2 class="text-lg font-semibold text-gray-700 border-b pb-2">
+          {{ editId ? "تعديل مستلزم" : "إضافة مستلزم جديد" }}
+        </h2>
 
+        <button
+          type="button"
+          class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+          data-modal-hide="authentication-modal"
+        >
+          <svg
+            class="w-3 h-3"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 14"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+            />
+          </svg>
+          <span class="sr-only">Close modal</span>
+        </button>
+      </div>
+      <!-- Modal body -->
+      <div class="p-4 md:p-5">
+        <form
+          (ngSubmit)="addOrUpdateSupply()"
+          class="bg-white p-6 rounded-lg shadow-md mb-6 space-y-4"
+        >
+          <!-- الاسم -->
+          <div>
+            <label class="block text-sm font-medium text-gray-600 mb-1"
+              >الاسم</label
+            >
+            <input
+              type="text"
+              [(ngModel)]="newSupply.name"
+              name="name"
+              required
+              class="w-full p-2 border border-gray-300 rounded"
+            />
+          </div>
+          <!-- الكميات -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-600 mb-1">
+                الكمية الأساسية
+              </label>
+              <div class="flex items-center gap-2">
+                <button
+                  type="button"
+                  (click)="decrement('baseQuantity')"
+                  class="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300"
+                >
+                  -
+                </button>
+                <span>{{ newSupply.baseQuantity }}</span>
+                <button
+                  type="button"
+                  (click)="increment('baseQuantity')"
+                  class="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300"
+                >
+                  +
+                </button>
+              </div>
+            </div>
 
+            <div>
+              <label class="block text-sm font-medium text-gray-600 mb-1">
+                الكمية المستخدمة
+              </label>
+              <div class="flex items-center gap-2">
+                <button
+                  type="button"
+                  (click)="decrement('usedQuantity')"
+                  class="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300"
+                >
+                  -
+                </button>
+                <span>{{ newSupply.usedQuantity }}</span>
+                <button
+                  type="button"
+                  (click)="increment('usedQuantity')"
+                  class="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-600 mb-1">
+                الكمية الإضافية
+              </label>
+              <div class="flex items-center gap-2">
+                <button
+                  type="button"
+                  (click)="decrement('extraQuantity')"
+                  class="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300"
+                >
+                  -
+                </button>
+                <span>{{ newSupply.extraQuantity }}</span>
+                <button
+                  type="button"
+                  (click)="increment('extraQuantity')"
+                  class="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- السعر -->
+          <div>
+            <label class="block text-sm font-medium text-gray-600 mb-1">
+              السعر
+            </label>
+            <input
+              type="number"
+              [(ngModel)]="newSupply.price"
+              name="price"
+              min="0"
+              class="w-full p-2 border border-gray-300 rounded"
+            />
+          </div>
+
+          <div class="flex justify-between"></div>
+
+          <!-- تاريخ الإضافة -->
+          <div>
+            <label class="block text-sm font-medium text-gray-600 mb-1">
+              تاريخ الإضافة
+            </label>
+            <input
+              type="date"
+              [(ngModel)]="newSupply.addedDate"
+              name="addedDate"
+              class="w-full p-2 border border-gray-300 rounded"
+            />
+          </div>
+
+          <!-- الأزرار -->
+          <div class="flex gap-3 flex-wrap">
+            <button
+              type="submit"
+              class="px-4 py-2 bg-linear-to-l from-blue-500 to-purple-600 my-3 hover:bg-linear-to-l transition-all duration-500 text-white rounded"
+            >
+              {{ editId ? "تحديث" : "إضافة" }}
+            </button>
+            <button
+              type="button"
+              (click)="resetForm()"
+              class="px-4 py-2 bg-linear-to-l from-blue-500 to-purple-600 my-3 hover:bg-linear-to-l transition-all duration-500 text-white"
+            >
+              إعادة تعيين
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
